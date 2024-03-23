@@ -1,23 +1,53 @@
 from turtle import Turtle
 
+STARTING_POSITION = [(0, 0), (-20, 0), (-40, 0)]
+MOVE_DISTANCE = 20
+
 
 class Snake:
-    body_parts = []
-
+    # initializing the snake body
     def __init__(self):
+        self.body_parts = []
+        self.create_snake()
+        self.head = self.body_parts[0]
 
-        starting_positions = [(0, 0), (-20, 0), (-40, 0)]
-        for pos in starting_positions:
+    def create_snake(self):
 
+        for pos in STARTING_POSITION:
             new_part = Turtle(shape="square")
             new_part.color("yellow")
             new_part.penup()
             new_part.goto(pos)
             self.body_parts.append(new_part)
 
+    # function to keep the snake moving by moving the head and making other parts follow the head
     def move(self):
         for part in range(len(self.body_parts) - 1, 0, -1):
             next_x = self.body_parts[part - 1].xcor()
             next_y = self.body_parts[part - 1].ycor()
             self.body_parts[part].goto(next_x, next_y)
-        self.body_parts[0].forward(20)
+        self.head.forward(MOVE_DISTANCE)
+
+    def move_up(self):
+        if self.head.heading() == 270:
+            pass
+        else:
+            self.head.setheading(90)
+
+    def move_down(self):
+        if self.head.heading() == 90:
+            pass
+        else:
+            self.head.setheading(270)
+
+    def move_left(self):
+        if self.head.heading() == 0:
+            pass
+        else:
+            self.head.setheading(180)
+
+    def move_right(self):
+        if self.head.heading() == 180:
+            pass
+        else:
+            self.head.setheading(0)
