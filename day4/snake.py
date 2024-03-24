@@ -47,3 +47,10 @@ class Snake:
     def move_right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+
+    def elongate(self):
+
+        new_part = Turtle(shape="square")
+        new_part.color("yellow")
+        new_part.penup()
+        self.body_parts.append(new_part)
