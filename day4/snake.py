@@ -18,13 +18,18 @@ class Snake:
     def create_snake(self):
 
         for pos in STARTING_POSITION:
-            new_part = Turtle(shape="square")
-            new_part.color("yellow")
-            new_part.penup()
-            new_part.goto(pos)
-            self.body_parts.append(new_part)
+            self.add_segment(pos)
 
-    # function to keep the snake moving by moving the head and making other parts follow the head
+    def add_segment(self, pos):
+        new_part = Turtle(shape="square")
+        new_part.color("yellow")
+        new_part.penup()
+        new_part.goto(pos)
+        self.body_parts.append(new_part)
+
+    def extend(self):
+        self.add_segment(self.body_parts[-1].pos())
+
     def move(self):
         for part in range(len(self.body_parts) - 1, 0, -1):
             next_x = self.body_parts[part - 1].xcor()
@@ -47,10 +52,3 @@ class Snake:
     def move_right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
-
-    def elongate(self):
-
-        new_part = Turtle(shape="square")
-        new_part.color("yellow")
-        new_part.penup()
-        self.body_parts.append(new_part)
