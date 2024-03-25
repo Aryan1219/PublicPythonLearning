@@ -2,6 +2,8 @@ import random
 from turtle import Turtle
 
 SPEED = 1
+
+
 class Ball(Turtle):
     def __init__(self):
         super().__init__()

@@ -34,6 +34,3 @@ class Paddle(Turtle):
             self.goto(-350, 0)
         else:
             self.goto(350, 0)
-
-
-
