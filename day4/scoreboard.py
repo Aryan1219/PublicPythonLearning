@@ -17,17 +17,21 @@ class Scoreboard(Turtle):
         self.print_score()
 
     def get_highscore(self) -> int:
-        with open('highscore.txt','r') as file:
+        with open("highscore.txt", "r") as file:
             value = file.read()
         return int(value)
 
-    def update_highscore(self,value):
-        with open('highscore.txt','w') as file:
+    def update_highscore(self, value):
+        with open("highscore.txt", "w") as file:
             file.write(str(value))
 
     def print_score(self):
         self.clear()
-        self.write(arg=f"SCORE: {self.score}  HIGHSCORE : {self.get_highscore()}", align=ALIGNMENT, font=FONT)
+        self.write(
+            arg=f"SCORE: {self.score}  HIGHSCORE : {self.get_highscore()}",
+            align=ALIGNMENT,
+            font=FONT,
+        )
 
     def update(self):
         self.score += 1
@@ -38,35 +42,7 @@ class Scoreboard(Turtle):
             self.update_highscore(self.score)
         self.score = -1
         self.update()
+
     # def game_over(self):
     #     self.home()
     #     self.write(arg="GAME OVER", align=ALIGNMENT, font=FONT)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
