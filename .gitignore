@@ -3,3 +3,4 @@ test_folder
 .idea
 *.ipynb
 day10
+.vscode
